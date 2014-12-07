@@ -1,0 +1,6 @@
+C:\GIT\GoodProjects\lastfmRecommedizer\lastfmRecommedizer\lastfmRecommedizer\bin\Debug\lastfmRecommedizer.exe.config
+C:\GIT\GoodProjects\lastfmRecommedizer\lastfmRecommedizer\lastfmRecommedizer\obj\Debug\lastfmRecommedizer.csprojResolveAssemblyReference.cache
+C:\GIT\GoodProjects\lastfmRecommedizer\lastfmRecommedizer\lastfmRecommedizer\bin\Debug\lastfmRecommedizer.exe
+C:\GIT\GoodProjects\lastfmRecommedizer\lastfmRecommedizer\lastfmRecommedizer\bin\Debug\lastfmRecommedizer.pdb
+C:\GIT\GoodProjects\lastfmRecommedizer\lastfmRecommedizer\lastfmRecommedizer\obj\Debug\lastfmRecommedizer.exe
+C:\GIT\GoodProjects\lastfmRecommedizer\lastfmRecommedizer\lastfmRecommedizer\obj\Debug\lastfmRecommedizer.pdb
