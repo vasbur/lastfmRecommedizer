@@ -11,6 +11,8 @@ namespace lastfmRecommedizer.WebServer
     {
         static public string getPage(string username)
         {
+            LastFmApiClient.LovedTracks lt =   LastFmApiClient.ApiTools.GetLovedTracks(username);
+
             StreamReader st = new StreamReader("C:\\GIT\\GoodProjects\\lastfmRecommedizer\\lastfmRecommedizer\\lastfmRecommedizer\\WebServer\\userPage.html");
             string result = "";
             while (!st.EndOfStream)
