@@ -5,7 +5,7 @@
     <meta charset="utf-8" />    
   <title>last.FM recommendizer</title>
 <style>
-a.button24 {
+input.button24 {
   display: inline-block;
   color: white;
   text-decoration: none;
@@ -21,13 +21,22 @@ a.button24 {
 a.button24:hover { background: linear-gradient(#f5ae00, #f59500) #f5ae00; }
 a.button24:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }
 </style>
+
+    <script>
+        function test()
+        {
+            window.location = "/user?name="+document.getElementById("login").value;
+        }
+
+    </script>
+   
  </head>
 <body>
 введите свое имя
 
 <br/>
-<input type="text" name="login"/>
-
-<a href="user?name=vasbur" class="button24">кнопка</a>
+<input type="text" name="login" id ="login"/>
+<input type="button" class="button24" value="submit" onclick="test();"/>
+ 	
 </body>
 </html>
