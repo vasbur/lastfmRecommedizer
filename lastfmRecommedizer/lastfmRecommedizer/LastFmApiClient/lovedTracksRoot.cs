@@ -8,9 +8,11 @@ using System.Xml.Serialization;
 namespace lastfmRecommedizer.LastFmApiClient
 {
     [XmlRoot(ElementName="lfm")]
-    public class lovedTracksRoot
+    public class lovedTracksRoot : TrackCollectionRoot
     {
         [XmlElement(ElementName = "lovedtracks")]
-        public LovedTracks lovedTracks { get; set; }
+        public LovedTracks TrackCollection { get; set; }
+
+     
     }
 }

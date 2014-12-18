@@ -11,10 +11,10 @@ namespace lastfmRecommedizer.WebServer
     {
         static public string getPage(string username)
         {
-            LastFmApiClient.LovedTracks lt =   LastFmApiClient.ApiTools.GetLovedTracks(username);
+            List<LastFmApiClient.Track> lt = UsersDataCashe.User.getUser(username).lovedTracks;
 
             string trackList = "";
-            foreach (LastFmApiClient.Track track in lt.tracks) 
+            foreach (LastFmApiClient.Track track in lt) 
                 trackList += "<br> " + track.artist.name + " - " + track.name; 
             
 

@@ -9,10 +9,11 @@ using System.Xml.Serialization;
 
 namespace lastfmRecommedizer.LastFmApiClient
 {
-    class ApiConnector
+    class ApiConnector<T>
     {
+        Task<T> ApiTask; 
 
-        public lovedTracksRoot GetApiData(string url)
+        public T GetApiData(string url)
         {
 
             HttpWebRequest Request = (HttpWebRequest)HttpWebRequest.Create(url);
@@ -21,13 +22,27 @@ namespace lastfmRecommedizer.LastFmApiClient
             StreamReader sr = new StreamReader(ResponseStream, Encoding.UTF8);
             string s = sr.ReadToEnd();
                  
-
-            //WebClient WC = new WebClient();
-            //string s = WC.DownloadString(url);
-            XmlSerializer xml = new XmlSerializer(typeof(lovedTracksRoot));
-            lovedTracksRoot res = xml.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(s))) as lovedTracksRoot;
+            XmlSerializer xml = new XmlSerializer(typeof(T));
+            T res = (T)xml.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(s)));
 
             return res;
+        }
+
+        private T GetApiDataAsynk(object obj)
+        {
+            return GetApiData((string)obj);
+        }
+
+        public void StartAsync(string url)
+        {
+            ApiTask = new Task<T>(GetApiDataAsynk, url);
+            ApiTask.Start();
+        }
+
+        public T GetAsynkResult()
+        {
+            ApiTask.Wait();
+            return ApiTask.Result; 
         }
     }
 }

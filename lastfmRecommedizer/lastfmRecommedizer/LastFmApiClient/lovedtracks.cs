@@ -7,9 +7,20 @@ using System.Xml.Serialization;
 
 namespace lastfmRecommedizer.LastFmApiClient
 {
-    public class LovedTracks
+    public class LovedTracks : TrackCollection
     {
         [XmlElement(ElementName="track")]
         public List<Track> tracks { get; set; }
+
+        [XmlAttribute(AttributeName = "page")]
+        public string page { get; set; }
+
+        [XmlAttribute(AttributeName = "totalPages")]
+        public string totalPages { get; set; }
+
+        public void addTrack(Track track)
+        {
+            tracks.Add(track);
+        }
     }
 }
