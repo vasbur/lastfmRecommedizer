@@ -7,12 +7,25 @@ using System.Xml.Serialization;
 
 namespace lastfmRecommedizer.LastFmApiClient
 {
-    [XmlRoot(ElementName="lfm")]
+    [XmlRoot(ElementName = "lfm")]
     public class bannedTracksRoot : ITrackCollectionRoot
     {
         [XmlElement(ElementName = "bannedtracks")]
-        public ITrackCollection TrackCollection { get; set; }
+        public LovedTracks TrackCollection { get; set; }
 
-     
+        public List<UsersDataCashe.TrackInfo> getTrackInfoList()
+        {
+            return TrackCollection.getTrackInfoList();
+        }
+
+        public string currentPage()
+        {
+            return TrackCollection.page;
+        }
+        public string totalPages()
+        {
+            return TrackCollection.totalPages;
+        }
+  
     }
 }

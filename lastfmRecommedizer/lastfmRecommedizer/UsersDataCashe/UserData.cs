@@ -10,15 +10,18 @@ namespace lastfmRecommedizer.UsersDataCashe
     {
         private string _username;
         private List<TrackInfo> _lovedTracks;
+        private List<TrackInfo> _bannedTracks;
 
-        public UserData(string username, List<TrackInfo> lovedTracks)
+        public UserData(string username, List<TrackInfo> lovedTracks, List<TrackInfo> bannedTracks)
         {
             _username = username;
             _lovedTracks = lovedTracks;
+            _bannedTracks = bannedTracks;
         }
 
         public string username { get { return _username; } }
         public List<TrackInfo> lovedTracks { get { return _lovedTracks; } }
+        public List<TrackInfo> bannedTracks { get { return _bannedTracks; } }
 
 
     }

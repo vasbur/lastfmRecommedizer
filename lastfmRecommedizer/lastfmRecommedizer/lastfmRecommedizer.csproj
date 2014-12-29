@@ -44,6 +44,7 @@
     <Compile Include="LastFmApiClient\ApiConnector.cs" />
     <Compile Include="LastFmApiClient\ApiTools.cs" />
     <Compile Include="LastFmApiClient\Artist.cs" />
+    <Compile Include="LastFmApiClient\bannedTracksRoot.cs" />
     <Compile Include="LastFmApiClient\lovedtracks.cs" />
     <Compile Include="LastFmApiClient\lovedTracksRoot.cs" />
     <Compile Include="LastFmApiClient\Track.cs" />

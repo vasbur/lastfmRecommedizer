@@ -22,8 +22,12 @@ namespace lastfmRecommedizer.UsersDataCashe
              else
              {
                  LastFmApiClient.ApiTools<LastFmApiClient.lovedTracksRoot> ApiTool = new LastFmApiClient.ApiTools<LastFmApiClient.lovedTracksRoot>();
-                 List<TrackInfo> LT = ApiTool.GetLovedTracks(username);
-                 UserData result = new UserData(username, LT);
+                 List<TrackInfo> LT = ApiTool.GetTracks(username, "getlovedtracks");
+
+                 LastFmApiClient.ApiTools<LastFmApiClient.bannedTracksRoot> ApiTool2 = new LastFmApiClient.ApiTools<LastFmApiClient.bannedTracksRoot>();
+                 List<TrackInfo> BT = ApiTool2.GetTracks(username, "getbannedtracks");
+
+                 UserData result = new UserData(username, LT, BT);
                  userlist.Add(result);
                  return result; 
              }

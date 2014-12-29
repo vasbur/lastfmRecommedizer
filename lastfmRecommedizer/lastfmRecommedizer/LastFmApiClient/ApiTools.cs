@@ -25,9 +25,9 @@ namespace lastfmRecommedizer.LastFmApiClient
          {
        
 
-        public List<UsersDataCashe.TrackInfo> GetLovedTracks(string username)
+        public List<UsersDataCashe.TrackInfo> GetTracks(string username, string apiMethod)
         {
-            string ApiRequestString = ApiConst.apiUrl + "method=user.getlovedtracks&user=" + username + "&api_key=" + ApiConst.apiKey;
+            string ApiRequestString = ApiConst.apiUrl + "method=user."+apiMethod+"&user=" + username + "&api_key=" + ApiConst.apiKey;
 
             ApiConnector<T> api = new ApiConnector<T>();
             T LT = api.GetApiData(ApiRequestString);
