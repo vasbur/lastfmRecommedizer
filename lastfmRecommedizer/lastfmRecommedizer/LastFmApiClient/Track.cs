@@ -21,5 +21,10 @@ namespace lastfmRecommedizer.LastFmApiClient
 
         [XmlElement(ElementName = "artist")]
         public Artist artist { get; set; }
+
+        public UsersDataCashe.TrackInfo getTrackInfo()
+        {
+            return new UsersDataCashe.TrackInfo(name, mbid, artist.name, artist.mbid);
+        }
     }
 }

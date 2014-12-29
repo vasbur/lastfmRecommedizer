@@ -22,7 +22,7 @@ namespace lastfmRecommedizer.UsersDataCashe
              else
              {
                  LastFmApiClient.ApiTools<LastFmApiClient.lovedTracksRoot> ApiTool = new LastFmApiClient.ApiTools<LastFmApiClient.lovedTracksRoot>();
-                 List<LastFmApiClient.Track> LT = ApiTool.GetLovedTracks(username);
+                 List<TrackInfo> LT = ApiTool.GetLovedTracks(username);
                  UserData result = new UserData(username, LT);
                  userlist.Add(result);
                  return result; 

@@ -9,16 +9,16 @@ namespace lastfmRecommedizer.UsersDataCashe
     class UserData
     {
         private string _username;
-        private List<LastFmApiClient.Track> _lovedTracks;
+        private List<TrackInfo> _lovedTracks;
 
-        public UserData(string username, List<LastFmApiClient.Track> lovedTracks)
+        public UserData(string username, List<TrackInfo> lovedTracks)
         {
             _username = username;
             _lovedTracks = lovedTracks;
         }
 
         public string username { get { return _username; } }
-        public List<LastFmApiClient.Track> lovedTracks { get { return _lovedTracks; } }
+        public List<TrackInfo> lovedTracks { get { return _lovedTracks; } }
 
 
     }

@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace lastfmRecommedizer.LastFmApiClient
 {
-    interface TrackCollection
+   
+   interface ITrackCollectionRoot
     {
-        List<Track> tracks { get; set; }
-        string page { get; set; }
-        string totalPages { get; set; }
-    }
-
-    interface TrackCollectionRoot
-    {
-        LovedTracks TrackCollection { get; set; }
-    }
+       List<UsersDataCashe.TrackInfo> getTrackInfoList();
+       string currentPage();
+       string totalPages();
+   }
 
     static class ApiConst
     {
@@ -25,23 +21,23 @@ namespace lastfmRecommedizer.LastFmApiClient
 
     }
      class ApiTools<T>
-        where T:TrackCollectionRoot
+        where T : ITrackCollectionRoot
          {
        
 
-        public List<Track> GetLovedTracks(string username)
+        public List<UsersDataCashe.TrackInfo> GetLovedTracks(string username)
         {
             string ApiRequestString = ApiConst.apiUrl + "method=user.getlovedtracks&user=" + username + "&api_key=" + ApiConst.apiKey;
 
             ApiConnector<T> api = new ApiConnector<T>();
             T LT = api.GetApiData(ApiRequestString);
 
-            List<Track> result = LT.TrackCollection.tracks;
+            List<UsersDataCashe.TrackInfo> result = LT.getTrackInfoList();
 
             List<ApiConnector<T>> taskPool = new List<ApiConnector<T>>();
-            if (LT.TrackCollection.page != LT.TrackCollection.totalPages)
+            if (LT.currentPage() != LT.totalPages())
             {
-                for (int i = 2; i <= int.Parse(LT.TrackCollection.totalPages); i++)
+                for (int i = 2; i <= int.Parse(LT.totalPages()); i++)
                 {
                     ApiConnector<T> apiTask = new ApiConnector<T>();
                     apiTask.StartAsync(ApiRequestString + "&page=" + i.ToString());
@@ -51,7 +47,7 @@ namespace lastfmRecommedizer.LastFmApiClient
                 foreach (ApiConnector<T> apiTask in taskPool)
                 {
                     T NextPage = apiTask.GetAsynkResult();
-                    foreach (Track track in NextPage.TrackCollection.tracks)
+                    foreach (UsersDataCashe.TrackInfo track in NextPage.getTrackInfoList())
                         result.Add(track); 
                 }
             }
