@@ -22,15 +22,15 @@ namespace lastfmRecommedizer.UsersDataCashe
              else
              {
                  LastFmApiClient.ApiTools<LastFmApiClient.lovedTracksRoot> ApiTool = new LastFmApiClient.ApiTools<LastFmApiClient.lovedTracksRoot>();
-                 List<TrackInfo> LT = ApiTool.GetTracks(username, "getlovedtracks");
+                 ApiTool.StartAsync(username, "getlovedtracks");
 
                  LastFmApiClient.ApiTools<LastFmApiClient.bannedTracksRoot> ApiTool2 = new LastFmApiClient.ApiTools<LastFmApiClient.bannedTracksRoot>();
-                 List<TrackInfo> BT = ApiTool2.GetTracks(username, "getbannedtracks");
+                 ApiTool2.StartAsync(username, "getbannedtracks");
 
                  LastFmApiClient.ApiTools<LastFmApiClient.ListenedTracksRoot> ListenedTracksTool = new LastFmApiClient.ApiTools<LastFmApiClient.ListenedTracksRoot>();
-                 List<TrackInfo> ListenedTracks = ListenedTracksTool.GetTracks(username, "getrecenttracks");
+                 ListenedTracksTool.StartAsync(username, "getrecenttracks");
 
-                 UserData result = new UserData(username, LT, BT, ListenedTracks);
+                 UserData result = new UserData(username, ApiTool.GetAsyncResult(), ApiTool2.GetAsyncResult(), ListenedTracksTool.GetAsyncResult());
                  userlist.Add(result);
                  return result; 
              }

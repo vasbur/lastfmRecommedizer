@@ -23,11 +23,13 @@ namespace lastfmRecommedizer.LastFmApiClient
      class ApiTools<T>
         where T : ITrackCollectionRoot
          {
-       
+
+         Task<List<UsersDataCashe.TrackInfo>> methodTask;
+         string _apiMethod;
 
         public List<UsersDataCashe.TrackInfo> GetTracks(string username, string apiMethod)
         {
-            string ApiRequestString = ApiConst.apiUrl + "method=user."+apiMethod+"&user=" + username + "&api_key=" + ApiConst.apiKey;
+            string ApiRequestString = ApiConst.apiUrl + "method=user."+apiMethod+"&user=" + username + "&limit=50&api_key=" + ApiConst.apiKey;
 
             ApiConnector<T> api = new ApiConnector<T>();
             T LT = api.GetApiData(ApiRequestString);
@@ -56,5 +58,23 @@ namespace lastfmRecommedizer.LastFmApiClient
             return result;
 
         }
-    }
+
+        private List<UsersDataCashe.TrackInfo> GetTracksAsync(object obj)
+        {
+            return GetTracks((string)obj, _apiMethod);
+        }
+
+        public void StartAsync(string username, string apiMethod)
+        {
+            _apiMethod = apiMethod;
+            methodTask = new Task<List<UsersDataCashe.TrackInfo>>(GetTracksAsync, username);
+            methodTask.Start();
+        }
+
+        public List<UsersDataCashe.TrackInfo> GetAsyncResult()
+        {
+            methodTask.Wait();
+            return methodTask.Result;
+        }
+     }
 }
