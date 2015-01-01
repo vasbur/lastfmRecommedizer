@@ -37,7 +37,7 @@ namespace lastfmRecommedizer.LastFmApiClient
             List<ApiConnector<T>> taskPool = new List<ApiConnector<T>>();
             if (LT.currentPage() != LT.totalPages())
             {
-                for (int i = 2; i <= int.Parse(LT.totalPages()); i++)
+                for (int i = 2; (i<=10) && (i <= int.Parse(LT.totalPages())); i++)
                 {
                     ApiConnector<T> apiTask = new ApiConnector<T>();
                     apiTask.StartAsync(ApiRequestString + "&page=" + i.ToString());

@@ -45,6 +45,10 @@
     <Compile Include="LastFmApiClient\ApiTools.cs" />
     <Compile Include="LastFmApiClient\Artist.cs" />
     <Compile Include="LastFmApiClient\bannedTracksRoot.cs" />
+    <Compile Include="LastFmApiClient\ListenedTracks.cs" />
+    <Compile Include="LastFmApiClient\ListenedTracksRoot.cs" />
+    <Compile Include="LastFmApiClient\ListenedArtist.cs" />
+    <Compile Include="LastFmApiClient\ListenedTrack.cs" />
     <Compile Include="LastFmApiClient\lovedtracks.cs" />
     <Compile Include="LastFmApiClient\lovedTracksRoot.cs" />
     <Compile Include="LastFmApiClient\Track.cs" />
