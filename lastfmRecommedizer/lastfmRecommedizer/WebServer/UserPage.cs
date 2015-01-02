@@ -15,7 +15,7 @@ namespace lastfmRecommedizer.WebServer
 
             string trackList = "";
             foreach (UsersDataCashe.TrackInfo track in lt) 
-                trackList += "<br> " + track.artistName + " - " + track.trackName; 
+                trackList += "<br> " + track.artistName + " - <a href=\"/track?"+track.getRequestString()+"&user="+username+"\">" + track.trackName+"</a>"; 
             
 
 

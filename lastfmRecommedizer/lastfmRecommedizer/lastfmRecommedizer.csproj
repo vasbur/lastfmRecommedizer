@@ -57,6 +57,7 @@
     <Compile Include="UsersDataCashe\TrackInfo.cs" />
     <Compile Include="UsersDataCashe\User.cs" />
     <Compile Include="UsersDataCashe\UserData.cs" />
+    <Compile Include="WebServer\error404.cs" />
     <Compile Include="WebServer\UserPage.cs" />
     <Compile Include="WebServer\MainPage.cs" />
     <Compile Include="WebServer\ResponseThread.cs" />
@@ -66,6 +67,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WebServer\error404.html" />
     <Content Include="WebServer\userPage.html" />
     <Content Include="WebServer\mainPage.html" />
   </ItemGroup>

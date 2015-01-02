@@ -21,5 +21,11 @@ namespace lastfmRecommedizer.UsersDataCashe
             this.artistName = artistName;
             this.artistMbid = artistMbid;
         }
+
+        public string getRequestString()
+        {
+            return "trackname=" + trackName + "&trackmbid=" + trackMbid + "&artistname=" + artistName + "&artistmbid=" + artistMbid;
+        }
+
     }
 }

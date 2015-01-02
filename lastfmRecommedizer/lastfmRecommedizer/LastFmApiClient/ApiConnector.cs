@@ -15,12 +15,13 @@ namespace lastfmRecommedizer.LastFmApiClient
 
         public T GetApiData(string url)
         {
-
+            Console.WriteLine(System.DateTime.Now.ToString() + " start " + url);
             HttpWebRequest Request = (HttpWebRequest)HttpWebRequest.Create(url);
             HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
             Stream ResponseStream = Response.GetResponseStream();
             StreamReader sr = new StreamReader(ResponseStream, Encoding.UTF8);
             string s = sr.ReadToEnd();
+            Console.WriteLine(System.DateTime.Now.ToString() + " finish " + url);
                  
             XmlSerializer xml = new XmlSerializer(typeof(T));
             T res = (T)xml.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(s)));

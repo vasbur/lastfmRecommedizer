@@ -18,11 +18,14 @@ namespace lastfmRecommedizer.WebServer
             String ResponseString = "";
             if (rowUrl.IndexOf("/user") > -1)
             {
-                string username = ListenerContext.Request.QueryString["name"];             
+                string username = ListenerContext.Request.QueryString["name"];
                 ResponseString = UserPage.getPage(username);
             }
-            else
+            else if (rowUrl == "/")
                 ResponseString = MainPage.getPage();
+            else
+                ResponseString = Error404Page.getPage();
+
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(ResponseString);
             Response.OutputStream.Write(buffer, 0, buffer.Length);
             Response.OutputStream.Close(); 
