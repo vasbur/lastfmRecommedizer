@@ -29,30 +29,30 @@ namespace lastfmRecommedizer.LastFmApiClient
 
         public List<UsersDataCashe.TrackInfo> GetTracks(string username, string apiMethod)
         {
-            string ApiRequestString = ApiConst.apiUrl + "method=user."+apiMethod+"&user=" + username + "&limit=50&api_key=" + ApiConst.apiKey;
+            string ApiRequestString = ApiConst.apiUrl + "method=user."+apiMethod+"&user=" + username + "&limit=150&api_key=" + ApiConst.apiKey;
 
             ApiConnector<T> api = new ApiConnector<T>();
             T LT = api.GetApiData(ApiRequestString);
 
             List<UsersDataCashe.TrackInfo> result = LT.getTrackInfoList();
 
-            List<ApiConnector<T>> taskPool = new List<ApiConnector<T>>();
-            if (LT.currentPage() != LT.totalPages())
-            {
-                for (int i = 2; (i<=10) && (i <= int.Parse(LT.totalPages())); i++)
-                {
-                    ApiConnector<T> apiTask = new ApiConnector<T>();
-                    apiTask.StartAsync(ApiRequestString + "&page=" + i.ToString());
-                    taskPool.Add(apiTask);
-                }
+            //List<ApiConnector<T>> taskPool = new List<ApiConnector<T>>();
+            //if (LT.currentPage() != LT.totalPages())
+            //{
+            //    for (int i = 2; (i<=10) && (i <= int.Parse(LT.totalPages())); i++)
+            //    {
+            //        ApiConnector<T> apiTask = new ApiConnector<T>();
+            //        apiTask.StartAsync(ApiRequestString + "&page=" + i.ToString());
+            //        taskPool.Add(apiTask);
+            //    }
 
-                foreach (ApiConnector<T> apiTask in taskPool)
-                {
-                    T NextPage = apiTask.GetAsynkResult();
-                    foreach (UsersDataCashe.TrackInfo track in NextPage.getTrackInfoList())
-                        result.Add(track); 
-                }
-            }
+            //    foreach (ApiConnector<T> apiTask in taskPool)
+            //    {
+            //        T NextPage = apiTask.GetAsynkResult();
+            //        foreach (UsersDataCashe.TrackInfo track in NextPage.getTrackInfoList())
+            //            result.Add(track); 
+            //    }
+            //}
 
 
             return result;

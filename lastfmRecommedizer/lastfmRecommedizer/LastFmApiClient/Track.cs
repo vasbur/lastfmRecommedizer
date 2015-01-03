@@ -24,7 +24,7 @@ namespace lastfmRecommedizer.LastFmApiClient
 
         public UsersDataCashe.TrackInfo getTrackInfo()
         {
-            return new UsersDataCashe.TrackInfo(name, mbid, artist.name, artist.mbid);
+            return new UsersDataCashe.TrackInfo(name, mbid, artist.name, artist.mbid, url);
         }
     }
 }

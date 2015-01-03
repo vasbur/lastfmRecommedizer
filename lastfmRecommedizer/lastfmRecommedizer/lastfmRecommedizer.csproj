@@ -45,6 +45,10 @@
     <Compile Include="LastFmApiClient\ApiTools.cs" />
     <Compile Include="LastFmApiClient\Artist.cs" />
     <Compile Include="LastFmApiClient\bannedTracksRoot.cs" />
+    <Compile Include="LastFmApiClient\GetTopFans.cs" />
+    <Compile Include="LastFmApiClient\TopFansRoot.cs" />
+    <Compile Include="LastFmApiClient\UserList.cs" />
+    <Compile Include="LastFmApiClient\User.cs" />
     <Compile Include="LastFmApiClient\ListenedTracks.cs" />
     <Compile Include="LastFmApiClient\ListenedTracksRoot.cs" />
     <Compile Include="LastFmApiClient\ListenedArtist.cs" />
@@ -54,9 +58,13 @@
     <Compile Include="LastFmApiClient\Track.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recommendizer\RecomTools.cs" />
+    <Compile Include="Recommendizer\TrackList.cs" />
     <Compile Include="UsersDataCashe\TrackInfo.cs" />
     <Compile Include="UsersDataCashe\User.cs" />
     <Compile Include="UsersDataCashe\UserData.cs" />
+    <Compile Include="UsersDataCashe\UserRequest.cs" />
+    <Compile Include="WebServer\TrackPage.cs" />
     <Compile Include="WebServer\error404.cs" />
     <Compile Include="WebServer\UserPage.cs" />
     <Compile Include="WebServer\MainPage.cs" />
@@ -67,6 +75,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WebServer\trackPage.html" />
     <Content Include="WebServer\error404.html" />
     <Content Include="WebServer\userPage.html" />
     <Content Include="WebServer\mainPage.html" />

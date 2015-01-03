@@ -18,8 +18,17 @@ namespace lastfmRecommedizer.WebServer
             String ResponseString = "";
             if (rowUrl.IndexOf("/user") > -1)
             {
-                string username = ListenerContext.Request.QueryString["name"];
+                string username = ListenerContext.Request.QueryString["username"];
                 ResponseString = UserPage.getPage(username);
+            }
+            else if (rowUrl.IndexOf("/track") > -1)
+            {
+                string username = ListenerContext.Request.QueryString["username"];
+                string trackName = ListenerContext.Request.QueryString["trackname"];
+                string trackMbid = ListenerContext.Request.QueryString["trackmbid"];
+                string artistName = ListenerContext.Request.QueryString["artistname"];
+                string artistMbid = ListenerContext.Request.QueryString["artistmbid"];
+                ResponseString = TrackPage.getPage(username, trackName, trackMbid, artistName, artistMbid);
             }
             else if (rowUrl == "/")
                 ResponseString = MainPage.getPage();

@@ -15,17 +15,37 @@ namespace lastfmRecommedizer.LastFmApiClient
 
         public T GetApiData(string url)
         {
-            Console.WriteLine(System.DateTime.Now.ToString() + " start " + url);
+            string s="";
+            T res=default(T);
+            string startTime = System.DateTime.Now.ToString();
+            Console.WriteLine(startTime + " start " + url);
             HttpWebRequest Request = (HttpWebRequest)HttpWebRequest.Create(url);
-            HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
-            Stream ResponseStream = Response.GetResponseStream();
-            StreamReader sr = new StreamReader(ResponseStream, Encoding.UTF8);
-            string s = sr.ReadToEnd();
-            Console.WriteLine(System.DateTime.Now.ToString() + " finish " + url);
-                 
+            Request.Timeout = int.MaxValue;
+            try
+            {
+                HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+                Stream ResponseStream = Response.GetResponseStream();
+                StreamReader sr = new StreamReader(ResponseStream, Encoding.UTF8);
+                s = sr.ReadToEnd();
+                Console.WriteLine(System.DateTime.Now.ToString() + " finish " + url);
+            }
+            catch (Exception e)
+            {
+                string errorTime = System.DateTime.Now.ToString();
+                Console.WriteLine("api error: " + url);
+                return GetApiData(url);
+            }
+  
             XmlSerializer xml = new XmlSerializer(typeof(T));
-            T res = (T)xml.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(s)));
-
+            try
+            {
+                res = (T)xml.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(s)));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("xml error: " + url);
+           
+            }
             return res;
         }
 
