@@ -60,6 +60,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recommendizer\RecomTools.cs" />
     <Compile Include="Recommendizer\TrackList.cs" />
+    <Compile Include="TracksDataCashe\TrackData.cs" />
+    <Compile Include="TracksDataCashe\TracksDataTools.cs" />
     <Compile Include="UsersDataCashe\TrackInfo.cs" />
     <Compile Include="UsersDataCashe\User.cs" />
     <Compile Include="UsersDataCashe\UserData.cs" />

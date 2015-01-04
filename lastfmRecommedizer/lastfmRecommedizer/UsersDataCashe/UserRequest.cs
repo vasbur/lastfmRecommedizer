@@ -33,5 +33,10 @@ namespace lastfmRecommedizer.UsersDataCashe
             UserDataTask.Wait();
             return UserDataTask.Result; 
         }
+
+        public bool IsCompleted()
+        {
+            return UserDataTask.IsCompleted;
+        }
     }
 }
